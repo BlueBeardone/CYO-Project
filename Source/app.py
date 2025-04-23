@@ -253,6 +253,7 @@ style={
      State('Petrol_price', 'value')]
 )
 def update_output(n_clicks, product_code, warehouse, category, promo, petrol_price):
+    new_style = base_style.copy()
     if n_clicks > 0:
         input_df = pd.DataFrame([[
             product_code,
@@ -264,8 +265,6 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
         ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price'])
 
         prediction = model.predict(input_df)
-
-        new_style = base_style.copy()
 
         if prediction == 0:
             message = 'This product has a LOW demand' 
