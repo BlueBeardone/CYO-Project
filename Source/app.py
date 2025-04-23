@@ -274,7 +274,7 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
            new_style['background'] = colors['success']
 
         return html.H3(message, style={'color': 'black'}), new_style
-    return '', new_style
+    return ''
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
