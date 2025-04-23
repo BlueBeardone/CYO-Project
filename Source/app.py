@@ -287,7 +287,7 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
             petrol_price,
             high_demand
         ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price', 'High_Demand'])
-        
+        #Product_Code	Warehouse	Product_Category	Promo	Petrol_price	High_Demand
         prediction = model.predict(input_df)
         return f'Predicted Production: {prediction[0]:.2f} units'
     return ''
