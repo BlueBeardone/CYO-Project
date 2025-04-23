@@ -127,7 +127,7 @@ app.layout = html.Div([
                             'color': colors['text'],
                             'fontWeight': '600',
                             'marginBottom': '10px',
-                            'display': 'block'
+                            'display': 'white'
                         }),
                         dcc.RadioItems(
                             id='Promo',
