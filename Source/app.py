@@ -16,7 +16,7 @@ colors = {
     'card_bg': 'rgba(255, 255, 255, 0.05)',
     'accent': '#FF4B4B',
     'primary': '#0066CC',
-    'text': '#FFFFFF',
+    'text': 'white',
     'input_bg': '#2A3A5F',
     'success': '#00C851',
     'border': '1px solid rgba(255, 255, 255, 0.1)'
@@ -52,8 +52,8 @@ app.layout = html.Div([
                             id='Product_Code',
                             type='number',
                             value=16,
-                            min=15,
-                            max=18,
+                            min=1000,
+                            max=9999,
                             style={
                                 'width': '100%',
                                 'padding': '12px 18px',
@@ -157,7 +157,7 @@ app.layout = html.Div([
                             type='number',
                             value=5,
                             min=0,
-                            max=20,
+                            max=100,
                             style={
                                 'width': '100%',
                                 'padding': '12px 18px',
@@ -287,9 +287,11 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
             petrol_price,
             high_demand
         ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price', 'High_Demand'])
-        #Product_Code	Warehouse	Product_Category	Promo	Petrol_price	High_Demand
+        
         prediction = model.predict(input_df)
-        return f'Predicted Production: {prediction[0]:.2f} units'
+        
+        message = f'Predicted Production: {prediction[0]:.2f} units'
+        return html.H3(message, style={'color': 'black'})
     return ''
 
 if __name__ == '__main__':
