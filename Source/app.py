@@ -270,19 +270,18 @@ style={
      State('Warehouse', 'value'),
      State('Product_Category', 'value'),
      State('Promo', 'value'),
-     State('Petrol_price', 'value'),
-     State('High_Demand', 'value')]
+     State('Petrol_price', 'value')]
 )
-def update_output(n_clicks, product_code, warehouse, category, promo, petrol_price, high_demand):
+def update_output(n_clicks, product_code, warehouse, category, promo, petrol_price):
     if n_clicks > 0:
         input_df = pd.DataFrame([[
             product_code,
             warehouse,
             category,
             promo,
-            petrol_price,
-            high_demand
-        ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price', 'High_Demand'])
+            petrol_price
+            
+        ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price'])
         
         prediction = model.predict(input_df)
         
