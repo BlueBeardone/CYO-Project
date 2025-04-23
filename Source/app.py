@@ -51,7 +51,7 @@ app.layout = html.Div([
                         dcc.Input(
                             id='Product_Code',
                             type='number',
-                            value=16,
+                            value=1269,
                             min=1000,
                             max=9999,
                             style={
@@ -80,6 +80,7 @@ app.layout = html.Div([
                         dcc.Input(
                             id='Warehouse',
                             type='text',
+                            value=2,
                             style={
                                 'width': '100%',
                                 'padding': '12px 18px',
@@ -106,6 +107,7 @@ app.layout = html.Div([
                         dcc.Input(
                             id='Product_Category',
                             type='text',
+                            value=16,
                             style={
                                 'width': '100%',
                                 'padding': '12px 18px',
@@ -135,7 +137,7 @@ app.layout = html.Div([
                                 {'label': ' Yes', 'value': 1, 'style': {'color': colors['text'], 'marginRight': '25px'}},
                                 {'label': ' No', 'value': 0, 'style': {'color': colors['text']}}
                             ],
-                            value=0,
+                            value=1,
                             inline=True,
                             style={'marginTop': '10px'}
                         )
@@ -155,7 +157,7 @@ app.layout = html.Div([
                         dcc.Input(
                             id='Petrol_price',
                             type='number',
-                            value=5,
+                            value=85,
                             min=0,
                             max=100,
                             style={
@@ -181,21 +183,15 @@ app.layout = html.Div([
                             'marginBottom': '10px',
                             'display': 'block'
                         }),
-                        dcc.Input(
+                        dcc.RadioItems(
                             id='High_Demand',
-                            type='number',
-                            value=2,
-                            min=0,
-                            max=29,
-                            style={
-                                'width': '100%',
-                                'padding': '12px 18px',
-                                'background': colors['input_bg'],
-                                'border': colors['border'],
-                                'borderRadius': '8px',
-                                'color': colors['text'],
-                                'fontSize': '15px'
-                            }
+                            options=[
+                                {'label': ' Yes', 'value': 1, 'style': {'color': colors['text'], 'marginRight': '25px'}},
+                                {'label': ' No', 'value': 0, 'style': {'color': colors['text']}}
+                            ],
+                            value=1,
+                            inline=True,
+                            style={'marginTop': '10px'}
                         )
                     ],
                     style={'marginBottom': '30px'}
