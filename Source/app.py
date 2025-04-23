@@ -19,7 +19,21 @@ colors = {
     'text': 'white',
     'input_bg': '#2A3A5F',
     'success': '#00C851',
+    'failure': 'red',
     'border': '1px solid rgba(255, 255, 255, 0.1)'
+}
+
+base_style = {
+    'background': colors['success'],
+    'color': colors['text'],
+    'padding': '20px',
+    'borderRadius': '8px',
+    'margin': '30px auto 0',
+    'maxWidth': '400px',
+    'textAlign': 'center',
+    'fontSize': '18px',
+    'fontWeight': '600',
+    'boxShadow': '0 4px 15px rgba(0, 200, 81, 0.3)'
 }
 
 app.layout = html.Div([
@@ -214,18 +228,7 @@ app.layout = html.Div([
         # Prediction Output
         html.Div(
             id='prediction-output',
-            style={
-                'background': colors['success'],
-                'color': colors['text'],
-                'padding': '20px',
-                'borderRadius': '8px',
-                'margin': '30px auto 0',
-                'maxWidth': '400px',
-                'textAlign': 'center',
-                'fontSize': '18px',
-                'fontWeight': '600',
-                'boxShadow': '0 4px 15px rgba(0, 200, 81, 0.3)'
-            }
+            style= base_style
         )
     ],
     style={
@@ -262,13 +265,17 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
 
         prediction = model.predict(input_df)
 
+        new_style = base_style.copy()
+
         if prediction == 0:
             message = 'This product has a LOW demand' 
+            new_style['background'] = colors['failure']
         elif prediction == 1:
            message = 'This product has a HIGH demand' 
+           new_style['background'] = colors['success']
 
-        return html.H3(message, style={'color': 'black'})
-    return ''
+        return html.H3(message, style={'color': 'black'}), new_style
+    return '', new_style
 
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=False)
