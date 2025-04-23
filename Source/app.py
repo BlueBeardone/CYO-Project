@@ -263,9 +263,9 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
         prediction = model.predict(input_df)
 
         if prediction == 0:
-            message = 'This product has a low demand' 
+            message = 'This product has a LOW demand' 
         elif prediction == 1:
-           message = 'This product has a low demand' 
+           message = 'This product has a HIGH demand' 
 
         return html.H3(message, style={'color': 'black'})
     return ''
