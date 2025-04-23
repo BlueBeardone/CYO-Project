@@ -174,29 +174,6 @@ app.layout = html.Div([
                     style={'marginBottom': '25px'}
                 ),
 
-                # High Demand Input
-                html.Div(
-                    [
-                        html.Label("High Demand", style={
-                            'color': colors['text'],
-                            'fontWeight': '600',
-                            'marginBottom': '10px',
-                            'display': 'block'
-                        }),
-                        dcc.RadioItems(
-                            id='High_Demand',
-                            options=[
-                                {'label': ' Yes', 'value': 1, 'style': {'color': colors['text'], 'marginRight': '25px'}},
-                                {'label': ' No', 'value': 0, 'style': {'color': colors['text']}}
-                            ],
-                            value=1,
-                            inline=True,
-                            style={'marginTop': '10px'}
-                        )
-                    ],
-                    style={'marginBottom': '30px'}
-                ),
-
                 # Submit Button
                 html.Button(
                     'Calculate Production',
@@ -282,10 +259,14 @@ def update_output(n_clicks, product_code, warehouse, category, promo, petrol_pri
             petrol_price
             
         ]], columns=['Product_Code', 'Warehouse', 'Product_Category', 'Promo', 'Petrol_price'])
-        
+
         prediction = model.predict(input_df)
-        
-        message = f'Predicted Production: {prediction[0]:.2f} units'
+
+        if prediction == 0:
+            message = 'This product has a low demand' 
+        elif prediction == 1:
+           message = 'This product has a low demand' 
+
         return html.H3(message, style={'color': 'black'})
     return ''
 
